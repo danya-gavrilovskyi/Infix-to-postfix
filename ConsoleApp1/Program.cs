@@ -37,7 +37,24 @@
     return tokens;
 }
 
-void Main()
+string[] ConvertToRPN(string[] tokens)
+{
+    string[] queue = new string[tokens.Length];
+    int queueIndex = -1;
+    void PushQueue(string token)
+    {
+        queue[++queueIndex] = token;
+    }
+    string PopQueue()
+    {
+        string number = queue[queueIndex];
+        queue[queueIndex] = null;
+        queueIndex--;
+        return number;
+    }
+}
+
+    void Main()
 {
     Console.WriteLine("Enter your expression: ");
     string input = Console.ReadLine()!;
