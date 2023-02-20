@@ -111,6 +111,18 @@ string[] ConvertToRPN(string[] tokens)
         }
 
     }
+
+    while (operators[0] != null)
+    {
+        if (IsLeftBracketToken(operators[operatorsIndex]))
+        {
+            throw new Exception("Error: mismatched parentheses!");
+        }
+
+        PushQueue(PopOperators());
+    }
+
+    return queue;
 }
 
 
