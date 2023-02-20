@@ -170,6 +170,38 @@ string[] ConvertToRPN(string[] tokens)
     return queue;
 }
 
+string[] Evaluation(string[] rpnTokens)
+{
+    string[] result = new string[20];
+    int resultIndex = -1;
+    void PushToResult(string token)
+    {
+        result[++resultIndex] = token;
+    }
+    string PopResult()
+    {
+        string value = result[resultIndex];
+        result[resultIndex] = null;
+        resultIndex--;
+        return value;
+    }
+
+    foreach (string token in rpnTokens)
+    {
+        if (IsNumberToken(token))
+        {
+            PushToResult(token);
+        }
+        else if (IsOperatorToken(token))
+        {
+            string secondNum = PopResult();
+            string firstNum = PopResult();
+            PushToResult(Calculations(firstNum, secondNum, token));
+        }
+    }
+    return result;
+}
+
 void Main()
 {
     Console.WriteLine("Enter your expression: ");
