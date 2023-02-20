@@ -1,4 +1,9 @@
-﻿string[] Tokenizer(string input)
+﻿bool IsNumberToken(string token)
+{
+    return int.TryParse(token, out _);
+}
+
+string[] Tokenizer(string input)
 {
     string[] tokens = new string[20];
     int tokenIndex = -1;
@@ -124,7 +129,6 @@ string[] ConvertToRPN(string[] tokens)
 
     return queue;
 }
-
 
 void Main()
 {
