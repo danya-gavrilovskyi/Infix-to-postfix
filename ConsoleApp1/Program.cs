@@ -101,6 +101,13 @@ string[] ConvertToRPN(string[] tokens)
 
                 PushQueue(PopOperators());
             }
+
+            if (!IsLeftBracketToken(operators[operatorsIndex]))
+            {
+                throw new Exception("No left brackets token at the operators stack");
+            }
+
+            PopOperators();
         }
 
     }
