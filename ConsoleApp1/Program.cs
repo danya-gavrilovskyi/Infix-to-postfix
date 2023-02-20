@@ -38,6 +38,11 @@ int Priority(string token)
     }
 }
 
+bool IsLeftAssociative(string token)
+{
+    return IsOperatorToken(token) && token != "^";
+}
+
 string[] Tokenizer(string input)
 {
     string[] tokens = new string[20];
