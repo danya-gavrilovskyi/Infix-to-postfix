@@ -230,6 +230,8 @@ void Main()
 
     string[] tokens = Tokenizer(input);
     string[] rpnTokens = ConvertToRPN(tokens);
+
+    Console.WriteLine(String.Join(" ", Evaluation(rpnTokens)));
 }
 
 Main();
