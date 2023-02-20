@@ -66,9 +66,48 @@ string[] ConvertToRPN(string[] tokens)
         operatorsIndex--;
         return number;
     }
+
+    foreach (string token in tokens)
+    {
+        if (IsNumberToken(token))
+        {
+            PushQueue(token);
+        }
+        else if (IsOperatorToken(token))
+        {
+            while (operators[0] != null &&
+                !IsLeftBracketToken(operators[operatorsIndex]) &&
+                (Priority(operators[operatorsIndex]) > Priority(token) ||
+                (Priority(operators[operatorsIndex]) == Priority(token) &&
+                IsLeftAssociative(token))))
+            {
+                PushQueue(PopOperators());
+            }
+
+            PushOperators(token);
+        }
+        else if (IsLeftBracketToken(token))
+        {
+            PushOperators(token);
+        }
+        else if (IsRightBracketToken(token))
+        {
+            while (!IsLeftBracketToken(operators[operatorsIndex]))
+            {
+                if (operators.Length == 0)
+                {
+                    throw new Exception("Error: Missmatched parentheses!");
+                }
+
+                PushQueue(PopOperators());
+            }
+        }
+
+    }
 }
 
-    void Main()
+
+void Main()
 {
     Console.WriteLine("Enter your expression: ");
     string input = Console.ReadLine()!;
