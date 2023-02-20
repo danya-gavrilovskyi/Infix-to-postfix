@@ -18,6 +18,26 @@ bool IsRightBracketToken(string token)
     return token == ")";
 }
 
+int Priority(string token)
+{
+    switch (token)
+    {
+        case "(":
+        case ")":
+            return 0;
+        case "+":
+        case "-":
+            return 1;
+        case "*":
+        case "/":
+            return 2;
+        case "^":
+            return 3;
+        default:
+            return -1;
+    }
+}
+
 string[] Tokenizer(string input)
 {
     string[] tokens = new string[20];
