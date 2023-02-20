@@ -52,6 +52,20 @@ string[] ConvertToRPN(string[] tokens)
         queueIndex--;
         return number;
     }
+
+    string[] operators = new string[20];
+    int operatorsIndex = -1;
+    void PushOperators(string token)
+    {
+        operators[++operatorsIndex] = token;
+    }
+    string PopOperators()
+    {
+        string number = operators[operatorsIndex];
+        operators[operatorsIndex] = null;
+        operatorsIndex--;
+        return number;
+    }
 }
 
     void Main()
