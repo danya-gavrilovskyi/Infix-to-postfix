@@ -3,6 +3,11 @@
     return int.TryParse(token, out _);
 }
 
+bool IsOperatorToken(string token)
+{
+    return token is "-" or "+" or "*" or "/" or "^";
+}
+
 string[] Tokenizer(string input)
 {
     string[] tokens = new string[20];
