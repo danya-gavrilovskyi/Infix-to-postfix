@@ -8,6 +8,33 @@
     {
         tokens[++tokenIndex] = token;
     }
+
+    foreach (char el in input)
+    {
+        if (Char.IsNumber(el))
+        {
+            postfix += el;
+        }
+        else if (el is '-' or '+' or '*' or '/' or '^' or '(' or ')')
+        {
+
+            if (postfix.Length > 0)
+            {
+                Push(postfix);
+                postfix = "";
+            }
+
+            Push(el.ToString());
+        }
+
+    }
+
+    if (postfix.Length > 0)
+    {
+        Push(postfix);
+    }
+
+    return tokens;
 }
 
 void Main()
