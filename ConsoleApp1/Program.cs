@@ -202,6 +202,27 @@ string[] Evaluation(string[] rpnTokens)
     return result;
 }
 
+string Calculations(string num1, string num2, string operatorToken)
+{
+    int firstNumber, secondNumber;
+    int.TryParse(num1, out firstNumber);
+    int.TryParse(num2, out secondNumber);
+    switch (operatorToken)
+    {
+        case "+":
+            return (firstNumber + secondNumber).ToString();
+        case "-":
+            return (firstNumber - secondNumber).ToString();
+        case "*":
+            return (firstNumber * secondNumber).ToString();
+        case "/":
+            return (firstNumber / secondNumber).ToString();
+        case "^":
+            return (Math.Pow(firstNumber, secondNumber)).ToString();
+        default: throw new Exception("Error in calculations");
+    }
+}
+
 void Main()
 {
     Console.WriteLine("Enter your expression: ");
