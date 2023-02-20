@@ -39,7 +39,8 @@
 
 void Main()
 {
-
+    Console.WriteLine("Enter your expression: ");
+    string input = Console.ReadLine()!;
 }
 
 Main();
