@@ -174,6 +174,9 @@ void Main()
 {
     Console.WriteLine("Enter your expression: ");
     string input = Console.ReadLine()!;
+
+    string[] tokens = Tokenizer(input);
+    string[] rpnTokens = ConvertToRPN(tokens);
 }
 
 Main();
